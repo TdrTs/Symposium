@@ -7,16 +7,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.concurrent.ConcurrentLinkedDeque;
-
 public class MainActivity extends AppCompatActivity {
 
 
     DatabaseHelper myDb;
     EditText firstName;
-    EditText secondName;
-    EditText ageAge;
+    EditText lastName;
+    EditText adress;
+    EditText city;
+    EditText country;
     Button submitButton;
+
 
 
 
@@ -27,10 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
        myDb = new DatabaseHelper(this);
 
-       firstName = (EditText) findViewById(R.id.editTextName);
-       secondName = (EditText) findViewById(R.id.editTextSecondName);
-       ageAge = (EditText) findViewById(R.id.editTextAge);
+       firstName = (EditText) findViewById(R.id.editTextFirstName);
+       lastName = (EditText) findViewById(R.id.editTextLastName);
+       adress = (EditText) findViewById(R.id.editTextAdress);
        submitButton = (Button) findViewById(R.id.buttonSubmit);
+       city = (EditText) findViewById(R.id.editTextCity);
+       country = (EditText) findViewById(R.id.editTextCountry);
+
 
        AddData();
 
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              boolean isInserted = myDb.insertData(firstName.getText().toString(), secondName.getText().toString(), ageAge.getText().toString());
+              boolean isInserted = myDb.insertData(firstName.getText().toString(), lastName.getText().toString(), adress.getText().toString(), city.getText().toString(), country.getText().toString());
 
               if (isInserted == true) {
                   Toast.makeText(MainActivity.this, "Data inserted", Toast.LENGTH_LONG).show();
